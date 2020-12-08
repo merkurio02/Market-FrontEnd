@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="/assets/js/script.js" th:inline="javascript" th:src=@{/assets/js/script.js}></script>
+  <title>Proveedor</title>
+</head>
+
+<body>
+  <div class="container-fluid vh-100">
+    <div class="fixed-top row justify-content-center">
+      <nav class="navbar col-8 navbar-expand-lg navbar-light bg-white">
+
+
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" data-toggle="collapse" href="#collapseAgregar" role="button"
+              aria-expanded="false" aria-controls="collapseAgregar" title="Agregar"><i
+                class="far fa-plus-square fa-2x"></i></a>
+
+            <a class="nav-link active" data-toggle="collapse" href="#collapseBuscar" role="button" aria-expanded="false"
+              aria-controls="collapseBuscar" title="Buscar"><i class="fas fa-search fa-2x"></i></a>
+          </div>
+        </div>
+        <a th:href="@{/proveedores}"><h2>Proveedores</h2></a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+
+      <div class="w-100"></div>
+      <!-- FORMULARIO EDITAR  -->
+      <div class="col-5 collapse bg-white border rounded-lg p-3" id="collapseEditar">
+        <form action="#" id="formularioGuardar" th:action="@{/proveedores/update}" th:object="${proveedor}" th:method="POST">
+
+          <div class="form-group">
+            <label for="idEdit">Id</label>
+            <input type="text" class="form-control" id="idEdit" aria-describedby="id" th:field="*{id}" readonly >
+          </div>
+          <div class="form-group">
+            <label for="nombreEdit">Nombre</label>
+            <input type="text" class="form-control" id="nombreEdit" aria-describedby="nombre" th:field="*{nombre}">
+          </div>
+          <div class="form-group">
+            <label for="contactoEdit">Contacto</label>
+            <input type="text" class="form-control" id="contactoEdit" aria-describedby="contacto"
+              th:field="*{contacto}">
+          </div>
+          <div class="form-group">
+            <label for="cargoEdit">Cargo</label>
+            <input type="text" class="form-control" id="cargoEdit" aria-describedby="cargo" th:field="*{cargo}">
+          </div>
+          <div class="form-group">
+            <label for="direccionEdit">Direccion</label>
+            <input type="text" class="form-control" id="direccionEdit" aria-describedby="direccion"
+              th:field="*{direccion}">
+          </div>
+          <div class="form-group">
+            <label for="telefonoEdit">Telefono</label>
+            <input type="number" class="form-control" id="telefonoEdit" aria-describedby="telefono"
+              th:field="*{telefono}">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-toggle="collapse" href="#collapseEditar" role="button"
+          aria-expanded="false" aria-controls="collapseEditar">Cancelar</button>
+          
+        </form>
+      </div>
+      <div class="w-100"></div>
+      <!-- FORM GUARDAR -->
+      <div class="col-5 collapse bg-white border rounded-lg p-3" id="collapseAgregar">
+        <form action="#" id="formularioGuardar" th:action="@{/proveedores/save}" th:object="${proveedor}" th:method="POST">
+          <div class="form-group">
+            <label for="nombreForm">Nombre</label>
+            <input type="text" class="form-control" id="nombreForm" aria-describedby="nombre" th:field="*{nombre}">
+          </div>
+          <div class="form-group">
+            <label for="contactoForm">Contacto</label>
+            <input type="text" class="form-control" id="contactoForm" aria-describedby="contacto"
+              th:field="*{contacto}">
+          </div>
+          <div class="form-group">
+            <label for="cargoForm">Cargo</label>
+            <input type="text" class="form-control" id="cargoForm" aria-describedby="cargo" th:field="*{cargo}">
+          </div>
+          <div class="form-group">
+            <label for="direccionForm">Direccion</label>
+            <input type="text" class="form-control" id="direccionForm" aria-describedby="direccion"
+              th:field="*{direccion}">
+          </div>
+          <div class="form-group">
+            <label for="telefonoForm">Telefono</label>
+            <input type="number" class="form-control" id="telefonoForm" aria-describedby="telefono"
+              th:field="*{telefono}">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-toggle="collapse" href="#collapseAgregar" role="button"
+          aria-expanded="false" aria-controls="collapseAgregar">Cancelar</button>
+        </form>
+      </div>
+      <div class="w-100"></div>
+      <!-- form buscar -->
+      <div class="col-5 collapse bg-white border rounded-lg p-3   " id="collapseBuscar">
+        <form action="#" th:action="@{/proveedores/search}" method="GET">
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Buscar por nombre</label>
+            <input type="text" class="form-control" id="nombreBuscar" name="nombre">
+          </div>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+      </div>
+
+    </div>
+    <div class="row justify-content-center pt-5">
+
+      <div class="col-8 p-0 pt-3">
+        <!-- CUADRO MENSAJE -->
+        <div class=" bg-light collapse show  rounded-lg row" id="cuadroMensaje"><span class="col-11 my-2"
+            th:text="*{mensaje}">ERROR</span>
+          <span class=" col-1 my-2" data-toggle="collapse" href="#cuadroMensaje" role="button" aria-expanded="false" aria-controls="collapseAgregar" title="Cerrar menaje"> <i class="fas fa-times "></i></span></div>
+        <table class="table  table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Contacto</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Telefono</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="prov:${proveedores}">
+              <th scope="row" ><a th:href="@{/proveedores/}+${prov.id}" th:text="${prov.id}"></a></th>
+              <td th:id="nombre+${prov.id}" th:text="${prov.nombre}">COCACOLA</td>
+              <td th:id="contacto+${prov.id}" th:text="${prov.contacto}">PEDRO</td>
+              <td th:id="cargo+${prov.id}" th:text="${prov.cargo}">AREA PEDIDOS</td>
+              <td th:id="direccion+${prov.id}" th:text="${prov.direccion}">CAMINO MELIPILLA</td>
+              <td th:id="telefono+${prov.id}" th:text="${prov.telefono}">943783265</td>
+              <td>
+              <form action="" method="POST" th:action="@{/proveedores/delete}">
+              <input type="hidden" name="id" th:value="${prov.id}">
+                  <button type="button" class="btn btn-success" th:onclick="|rellenarFormularioEditar('${prov.id}');|"
+                  data-toggle="collapse" href="#collapseEditar" role="button"
+              aria-expanded="false" aria-controls="collapseAgregar" title="Modificar"><i class="far fa-edit" ></i></button>
+              
+                  <button type="submit" class="btn btn-danger" onclick="confirmaEliminarProveedor()"><i class="far fa-trash-alt"></i></button>
+</form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
